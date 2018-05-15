@@ -1,0 +1,13 @@
+directories:
+  output: dist
+  buildResources: assets
+files:
+  - build/**/*
+  - package.json
+extraMetadata:
+  main: build/electron.js
+appId: io.atom.electron.electron-cra-example
+publish:
+  provider: github
+extends: react-cra
+electronVersion: 2.0.0

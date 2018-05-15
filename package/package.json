@@ -1,0 +1,48 @@
+{
+  "name": "electron-create-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "electron-is-dev": "^0.3.0",
+    "electron-log": "^2.2.14",
+    "electron-updater": "^2.21.10",
+    "node-notifier": "^5.2.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "cross-env": "^5.1.4",
+    "electron": "^2.0.0",
+    "electron-builder": "^20.8.1",
+    "prettier": "^1.12.0",
+    "react-scripts": "^1.1.4",
+    "wait-on": "^2.1.0"
+  },
+  "homepage": "./",
+  "main": "public/electron.js",
+  "build": {
+    "appId": "io.atom.electron.electron-cra-example",
+    "files": [
+      "build/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "publish": {
+      "provider": "github"
+    }
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "pack": "build -c.extraMetadata.main=build/electron.js",
+    "release": "build -c.extraMetadata.main=build/electron.js --publish=always",
+    "prepack": "yarn build",
+    "prerelease": "yarn build"
+  }
+}
